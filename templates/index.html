@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CDC Data</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.0.2.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.0.2.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.0.2.min.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<style>
+		.container-fluid{
+			background-color: darkgrey;
+		}
+	</style>
+</head>
+<div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<form action="/">
+<select name= "state">
+	{% for state in states|unique%}
+		{% if state == current_state %}
+			<option selected value="{{ state }}">{{ state | safe }}</option>
+		{% else %}
+			<option value="{{ state }}">{{ state }}</option>
+		{% endif %}
+	{% endfor %}
+</select>
+<input type="submit">
+</form>
+</nav>
+	{{ state_script | safe}}
+	{{state_div | safe}}
+
+	{{ county_script | safe}}
+	{{ county_div | safe}}
+	
+</body>
+</html>
